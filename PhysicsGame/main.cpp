@@ -103,7 +103,7 @@ int main() /** Main Proc */
 			}
 		}
 
-		GameController.draw();
+		GameController.draw(window, SCALE);
 
 		window.display();
 	}

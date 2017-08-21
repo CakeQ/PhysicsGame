@@ -16,7 +16,7 @@ public:
 	game(); //!< Game controller constructor
 	~game(); //!< Game controller destructor
 
-	void draw(sf::RenderWindow window, double SCALE);
+	void draw(sf::RenderWindow& window, double SCALE);
 
 	//Test functions
 	void CreateGround(b2World& World, float X, float Y, double SCALE);

@@ -23,9 +23,9 @@ private:
 	sf::Sprite Sprite;
 
 public:
-	object(b2World iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double SCALE);		//!< Object constructor
+	object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double SCALE);		//!< Object constructor
 	~object();		//!< Object destructor
 
 	void update();	//!< Update object position
-	void draw(sf::RenderWindow window, double SCALE);	//!< Draw object on screen
+	void draw(sf::RenderWindow& window, double SCALE);	//!< Draw object on screen
 };

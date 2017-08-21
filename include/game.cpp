@@ -12,10 +12,9 @@ game::~game()
 
 }
 
-void game::draw(sf::RenderWindow window, double SCALE) 
+void game::draw(sf::RenderWindow& window, double SCALE) 
 {
-	for (int i = 0; i < ObjectList.size(); i++) 
-	{
+	for (int i = 0; i < ObjectList.size(); i++) {
 		ObjectList[i]->draw(window, SCALE);
 	}
 }

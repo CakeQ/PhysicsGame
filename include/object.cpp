@@ -1,7 +1,9 @@
 #include <object.h>
 
-object::object(b2World iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double SCALE)
+object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double SCALE)
 {
+	Texture.loadFromFile("../img/box.png");
+
 	//Define body
 	BodyDef.position = b2Vec2(iXPos / SCALE, iYPos / SCALE); //Scale is used because Box2D coordinates arent the same as pixel coordinates
 	BodyDef.type = b2_dynamicBody;
@@ -24,7 +26,7 @@ void object::update()
 
 }
 
-void object::draw(sf::RenderWindow window, double SCALE)
+void object::draw(sf::RenderWindow& window, double SCALE)
 {
 	Sprite.setTexture(Texture);
 	Sprite.setOrigin((Width / 2), (Height / 2));
