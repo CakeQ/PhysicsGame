@@ -1,6 +1,11 @@
 ﻿  object.cpp
-h:\documents\github\physicsgame\include\object.cpp(8): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
-h:\documents\github\physicsgame\include\object.cpp(13): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
-h:\documents\github\physicsgame\include\object.cpp(33): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  PhysicsGame.vcxproj -> H:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.exe
-  PhysicsGame.vcxproj -> H:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.pdb (Full PDB)
+d:\documents\github\physicsgame\include\object.cpp(8): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
+d:\documents\github\physicsgame\include\object.cpp(13): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
+d:\documents\github\physicsgame\include\object.cpp(47): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  game.cpp
+d:\documents\github\physicsgame\include\game.cpp(25): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(31): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.exe
+  PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.pdb (Full PDB)

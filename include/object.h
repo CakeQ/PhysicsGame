@@ -10,7 +10,6 @@
 
 class object {
 private:
-	bool Collision = false;
 	float XPos, YPos, Width, Height;
 
 	b2BodyDef BodyDef;
@@ -20,12 +19,12 @@ private:
 	b2FixtureDef FixtureDef;
 
 	sf::Texture Texture;
-	sf::Sprite Sprite;
 
 public:
 	object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double SCALE);		//!< Object constructor
 	~object();		//!< Object destructor
 
+	void setDynamic(bool Dynamic);
 	void update();	//!< Update object position
 	void draw(sf::RenderWindow& window, double SCALE);	//!< Draw object on screen
 };

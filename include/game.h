@@ -11,7 +11,7 @@
 
 class game {
 private:
-	std::vector<object*> ObjectList;
+	std::vector<object> ObjectList;
 public:
 	game(); //!< Game controller constructor
 	~game(); //!< Game controller destructor
