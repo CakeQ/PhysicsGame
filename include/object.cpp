@@ -1,6 +1,8 @@
 #include <object.h>
 
-object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double iSCALE)
+#include <iostream>
+
+object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, int iRestitution, double iSCALE)
 {
 	XPos = iXPos;
 	YPos = iYPos;
@@ -20,6 +22,7 @@ object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iH
 	FixtureDef.density = 1.0f;										//!< Sets the density of the body
 	FixtureDef.friction = 0.7f;
 	FixtureDef.shape = &Shape;										//!< Sets the 
+	FixtureDef.restitution = iRestitution;
 	Body->CreateFixture(&FixtureDef);								//!< Apply the fixture definition
 
 }

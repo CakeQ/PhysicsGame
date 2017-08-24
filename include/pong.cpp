@@ -1,6 +1,6 @@
 #include "pong.h"
 
-pong::pong(b2World& iWorld, float iXPos, float iYPos, double iSCALE) : object(iWorld, iXPos, iYPos, 32.0f, 32.0f, iSCALE)
+pong::pong(b2World& iWorld, float iXPos, float iYPos, double iSCALE) : object(iWorld, iXPos, iYPos, 32.0f, 32.0f, 1, iSCALE)
 {
 	getBody()->SetFixedRotation(1);
 	getBody()->SetLinearDamping(0);
@@ -29,20 +29,19 @@ void pong::startMoving()
 		else
 			Velocity.x = -8;
 
-		if (((rand() % 2) + 1) == 1)
+		/*if (((rand() % 2) + 1) == 1)
 			Velocity.y = 8;
 		else
-			Velocity.y = -8;
+			Velocity.y = -8;*/
+
+		move(Velocity);
 	}
 	Moving = 1;
 }
 
 void pong::update()
 {
-	if (Moving != 0)
-	{
-		move(Velocity);
-	}
+
 }
 
 void pong::move(b2Vec2& iVelocity)

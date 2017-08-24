@@ -24,7 +24,7 @@ private:
 
 	double SCALE;
 public:
-	object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double iSCALE);		//!< Object 
+	object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, int iRestitution, double iSCALE);		//!< Object 
 	~object();		//!< Object destructor
 
 	b2Body* getBody() { return Body; };

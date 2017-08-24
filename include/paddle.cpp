@@ -1,6 +1,6 @@
 #include "paddle.h"
 
-paddle::paddle(b2World& iWorld, float iXPos, float iYPos, double iSCALE, int iPlayer) : object(iWorld, iXPos, iYPos, 32.0f, 128.0f, iSCALE)
+paddle::paddle(b2World& iWorld, float iXPos, float iYPos, double iSCALE, int iPlayer) : object(iWorld, iXPos, iYPos, 32.0f, 128.0f, 1, iSCALE)
 {
 	Player = iPlayer;
 

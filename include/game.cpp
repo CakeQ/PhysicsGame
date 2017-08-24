@@ -52,13 +52,13 @@ void game::handleInput(b2World& iWorld, sf::Event& iEvent)
 }
 
 void game::CreateWall(b2World& iWorld, float iX, float iY) {
-	object NewObject(iWorld, iX, iY, (WinWidth - 25), 16.0f, SCALE);
+	object NewObject(iWorld, iX, iY, (WinWidth - 25), 16.0f, 1, SCALE);
 	NewObject.setDynamic(0);
 	ObjectList.push_back( NewObject );
 }
 
 void game::CreateBox(b2World& iWorld, int iX, int iY) {
-	object NewObject(iWorld, iX, iY, 32.0f, 32.0f, SCALE);
+	object NewObject(iWorld, iX, iY, 32.0f, 32.0f, 1, SCALE);
 	ObjectList.push_back( NewObject );
 };
 

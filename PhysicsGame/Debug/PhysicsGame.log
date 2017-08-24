@@ -1,3 +1,9 @@
-﻿  pong.cpp
+﻿  game.cpp
+d:\documents\github\physicsgame\include\game.cpp(11): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.exe
   PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.pdb (Full PDB)
