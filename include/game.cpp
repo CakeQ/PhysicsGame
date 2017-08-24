@@ -22,6 +22,8 @@ game::game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE) :
 	CreateWall(iWorld, (WinWidth / 2), 20);					//Top wall
 
 	Pong = CreatePong(iWorld);
+
+	started = 0;
 }
 
 game::~game()
@@ -51,10 +53,12 @@ void game::handleInput(b2World& iWorld, sf::Event& iEvent)
 	{
 		if (iEvent.key.code == sf::Keyboard::Space)
 		{
-			if (!started)
+			if (started == 0) 
+			{
 				Pong.startMoving();
 				std::cout << "Start" << std::endl;
-			started = 1;
+				started = 1;
+			}
 		}
 	}
 
