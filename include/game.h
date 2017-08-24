@@ -12,13 +12,20 @@
 class game {
 private:
 	std::vector<object> ObjectList;
+	//object Player1, Player2;
+
+	double SCALE;
+	int WinWidth, WinHeight;
+
 public:
-	game(); //!< Game controller constructor
+	game(int iWinWidth, int iWinHeight, double iSCALE); //!< Game controller constructor
 	~game(); //!< Game controller destructor
 
-	void draw(sf::RenderWindow& window, double SCALE);
+	virtual void draw(sf::RenderWindow& iWindow);
+	//virtual void update();
+	//virtual void handleInput(b2World& iWorld, sf::Event& Event);
 
 	//Test functions
-	void CreateGround(b2World& World, float X, float Y, double SCALE);
-	void CreateBox(b2World& World, int MouseX, int MouseY, double SCALE);
+	void CreateGround(b2World& iWorld, float X, float Y);
+	void CreateBox(b2World& iWorld, int MouseX, int MouseY);
 };

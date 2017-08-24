@@ -1,10 +1,15 @@
-#include <game.h>
 #include <Box2D\Box2D.h>
+#include <game.h>
+#include <paddle.h>
 #include <object.h>
 
-game::game()
+game::game(int iWinWidth, int iWinHeight, double iSCALE)
+	//Player1(iWorld, (iWinWidth - 5), (iWinHeight / 2), 32.0f, 128.0f, iSCALE),
+	//Player2(iWorld, 5, (iWinHeight / 2), 32.0f, 128.0f, iSCALE)
 {
-
+	WinWidth = iWinWidth;
+	WinHeight = iWinHeight;
+	SCALE = iSCALE;
 }
 
 game::~game()
@@ -12,35 +17,62 @@ game::~game()
 
 }
 
-void game::draw(sf::RenderWindow& window, double SCALE) 
+void game::draw(sf::RenderWindow& iWindow)
 {
 	for (object Object : ObjectList) {
-		Object.draw(window, SCALE);
+		Object.draw(iWindow);
 	}
 }
 
-void game::CreateGround(b2World& iWorld, float iX, float iY, double iSCALE) {
-	//Define body
-	b2BodyDef BodyDef;
-	BodyDef.position = b2Vec2(iX / iSCALE, iY / iSCALE); //Scale is used because Box2D coordinates arent the same as pixel coordinates
-	BodyDef.type = b2_staticBody;
-	b2Body* Body = iWorld.CreateBody(&BodyDef);
+/*void game::handleInput(b2World& iWorld, sf::Event & iEvent)
+{
+	//Key inputs
+	if (iEvent.type == sf::Event::KeyPressed)
+	{
+		if (iEvent.key.code == sf::Keyboard::Space)
+		{
+				CreateBox(iWorld, 1024/2, 800/2);
+		}
+	}
 
-	//Define shape
-	b2PolygonShape Shape;
-	Shape.SetAsBox((1024.f / 2) / iSCALE, (16.f / 2) / iSCALE); // Creates a box shape. Divide your desired width and height by 2.
-	b2FixtureDef FixtureDef;
-	FixtureDef.density = 0.f;  // Sets the density of the body
-	FixtureDef.shape = &Shape; // Sets the shape
-	Body->CreateFixture(&FixtureDef); // Apply the fixture definition
+	b2Vec2 Velocity;
+	Velocity.x = 0;
+	Velocity.y = 0;
 
-	object NewObject(iWorld, iX, iY, 1024.f, 32.f, iSCALE);
+	//Key inputs
+	if (iEvent.type == sf::Event::KeyPressed)
+	{
+		if (iEvent.key.code == sf::Keyboard::Up)
+		{
+			Velocity.y = 5;
+			//Player1.update(Velocity);
+		}
+
+		if (iEvent.key.code == sf::Keyboard::Down)
+		{
+			Velocity.y = -5;
+		}
+
+		if (iEvent.key.code == sf::Keyboard::W)
+		{
+			Velocity.y = 5;
+		}
+
+		if (iEvent.key.code == sf::Keyboard::S)
+		{
+			Velocity.y = -5;
+		}
+	}
+}*/
+
+void game::CreateGround(b2World& iWorld, float iX, float iY) {
+	object NewObject(iWorld, iX, iY, 1024.0f, 16.0f, SCALE);
 	NewObject.setDynamic(0);
-	ObjectList.push_back(NewObject);
+	ObjectList.push_back( NewObject );
 }
 
-void game::CreateBox(b2World& iWorld, int iX, int iY, double iSCALE) {
-	object NewObject(iWorld, iX, iY, 32.0f, 32.0f, iSCALE);
+void game::CreateBox(b2World& iWorld, int iX, int iY) {
+	object NewObject(iWorld, iX, iY, 32.0f, 32.0f, SCALE);
 	NewObject.setDynamic(1);
 	ObjectList.push_back( NewObject );
 };

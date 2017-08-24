@@ -9,31 +9,31 @@
 #include <SFML\Graphics.hpp>
 #include <Box2D\Box2D.h>
 #include <game.h>
+#include <object.h>
+#include <vector>
 
 int main() /** Main Proc */
 {
+	std::vector<object> objectList;
+
 	const double SCALE = 30.0; //Box2D Pixel Scale
 	bool KeyCoolDown = false;
-	game GameController;
 
 	//Window properties
-	int iWinWidth = 1024;
-	int iWinHeight = 800;
+	int WinWidth = 1024;
+	int WinHeight = 800;
 
-	sf::RenderWindow window(sf::VideoMode(iWinWidth, iWinHeight), "Physics Game");
+	sf::RenderWindow window(sf::VideoMode(WinWidth, WinHeight), "Physics Game");
 	window.setFramerateLimit(60);
 
 	//Box2D World setup
-	b2Vec2 Gravity(0.0f, 10.0f);
+	b2Vec2 Gravity(0.0f, 0.0f);
 	b2World World(Gravity);
 
-	GameController.CreateGround(World, (iWinWidth/2), (iWinHeight-20), SCALE);	//Bottom Wall
-	GameController.CreateGround(World, (iWinWidth / 2), (-90), SCALE);			//Top wall
-	
-	sf::Texture GroundTexture;
-	sf::Texture BoxTexture;
-	GroundTexture.loadFromFile("../img/ground.png");
-	BoxTexture.loadFromFile("../img/box.png");
+	game GameController(WinWidth, WinHeight, SCALE);
+
+	GameController.CreateGround(World, (WinWidth/2), (WinHeight-20));	//Bottom Wall
+	GameController.CreateGround(World, (WinWidth / 2), 20);			//Top wall
 
 	sf::Font   MyFont;
 	sf::Uint32 MyCharset[] = { 0x4E16, 0x754C, 0x60A8, 0x597D, 0x0 }; // a set of unicode chinese characters
@@ -44,6 +44,8 @@ int main() /** Main Proc */
 	sf::Text Text;
 	Text.setFont(MyFont);
 	Text.setCharacterSize(24);
+
+	object testObject(World, 500, 500, 32.0f, 32.0f, SCALE);
 
 	while (window.isOpen())
 	{
@@ -58,84 +60,37 @@ int main() /** Main Proc */
 			}
 
 			//Key inputs
-			if (event.type == sf::Event::MouseButtonPressed)
-			{
-				if (event.mouseButton.button == sf::Mouse::Right)
-				{
-					if (KeyCoolDown == false)
-					{
-						int MouseX = sf::Mouse::getPosition(window).x;
-						int MouseY = sf::Mouse::getPosition(window).y;
-						GameController.CreateBox(World, MouseX, MouseY, SCALE);
-					}
-				}
-			}
-
-			if (event.type == sf::Event::MouseButtonReleased)
-			{
-				if (event.mouseButton.button == sf::Mouse::Right)
-				{
-					KeyCoolDown = false;
-				}
-			}
-
 			if (event.type == sf::Event::KeyPressed)
 			{
-				if (event.key.code == sf::Keyboard::C)
+				if (event.key.code == sf::Keyboard::Space)
 				{
-					for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
-					{
-						if (BodyIterator->GetType() == b2_dynamicBody)
-						{
-							//Delete all boxes
-						}
-					}
+					GameController.CreateBox(World, 1024 / 2, 800 / 2);
 				}
 			}
+			//GameController.handleInput(World, event);
 		}
 
 		//Simulate the world
-		World.Step(1 / 60.f, 8, 3);
+		World.Step(1 / 60.0f, 8, 3);
 
-		window.clear();
+		window.clear(sf::Color::Black);
 
 		int bodycount = World.GetBodyCount();
 		Text.setString(std::to_string(bodycount));
 
-		//Draw all objects in game. Very WIP as it only uses 2 obj types. REPLACE
-		/*for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
-		{
-			if (BodyIterator->GetType() == b2_staticBody)
-			{
-				sf::Sprite GroundSprite;
-				GroundSprite.setTexture(GroundTexture);
-				GroundSprite.setOrigin(iWinWidth / 2, 8.f);
-				GroundSprite.setPosition(BodyIterator->GetPosition().x * SCALE, BodyIterator->GetPosition().y * SCALE);
-				GroundSprite.setRotation(180 / b2_pi * BodyIterator->GetAngle());
-				window.draw(GroundSprite);
-			}
-			else
-			{
-				sf::Sprite Sprite;
 
-				Sprite.setTexture(BoxTexture);
-				Sprite.setOrigin((16.0f / 2), (16.0f / 2));
-				Sprite.setPosition(SCALE * BodyIterator->GetPosition().x, SCALE * BodyIterator->GetPosition().y);
-				Sprite.setRotation(BodyIterator->GetAngle() * 180 / b2_pi);
-				window.draw(Sprite);
-			}
-		}*/
+		GameController.draw(window);
+		testObject.draw(window);
 
-		GameController.draw(window, SCALE);
+		//window.draw(Text);
 
-		window.draw(Text);
 		window.display();
 	}
 
-	for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
+	/*for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
 	{
 		World.DestroyBody(BodyIterator);
-	}
+	}*/
 
 	return 0;
 }

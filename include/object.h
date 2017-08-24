@@ -19,12 +19,17 @@ private:
 	b2FixtureDef FixtureDef;
 
 	sf::Texture Texture;
+	sf::Sprite Sprite;
+	sf::RectangleShape Box;
 
+	double SCALE;
 public:
-	object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double SCALE);		//!< Object constructor
+	object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double iSCALE);		//!< Object 
 	~object();		//!< Object destructor
 
+	b2Body* getBody() { return Body; };
+
 	void setDynamic(bool Dynamic);
-	void update();	//!< Update object position
-	void draw(sf::RenderWindow& window, double SCALE);	//!< Draw object on screen
+	void update(b2Vec2& iVelocity);	//!< Update object position
+	void draw(sf::RenderWindow& window);	//!< Draw object on screen
 };

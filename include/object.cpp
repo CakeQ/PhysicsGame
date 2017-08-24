@@ -1,19 +1,27 @@
 #include <object.h>
 
-object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double SCALE)
+object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double iSCALE)
 {
-	Texture.loadFromFile("../img/box.png");
+	XPos = iXPos;
+	YPos = iYPos;
+	
+	Width = iWidth;
+	Height = iHeight;
+
+	SCALE = iSCALE;
 
 	//Define body
-	BodyDef.position = b2Vec2(iXPos / SCALE, iYPos / SCALE);		//!< Scale is used because Box2D coordinates arent the same as pixel coordinates
-	BodyDef.type = b2_staticBody;
+	BodyDef.position = b2Vec2(XPos / SCALE, YPos / SCALE);			//!< Scale is used because Box2D coordinates arent the same as pixel coordinates
+	BodyDef.type = b2_dynamicBody;
 	Body = iWorld.CreateBody(&BodyDef);
 
 	//Define shape
-	Shape.SetAsBox((iWidth / 2) / SCALE, (iHeight / 2) / SCALE);	//!< Creates a box shape. Divide your desired width and height by 2.
-	FixtureDef.density = 0.f;										//!< Sets the density of the body
+	Shape.SetAsBox((Width / 2) / SCALE, (Height / 2) / SCALE);		//!< Creates a box shape. Divide your desired width and height by 2.
+	FixtureDef.density = 1.0f;										//!< Sets the density of the body
+	FixtureDef.friction = 0.7f;
 	FixtureDef.shape = &Shape;										//!< Sets the shape
 	Body->CreateFixture(&FixtureDef);								//!< Apply the fixture definition
+
 }
 
 object::~object()
@@ -25,26 +33,32 @@ void object::setDynamic(bool Dynamic)
 {
 	if (Dynamic)
 	{
-		BodyDef.type = b2_dynamicBody;
+		Body->SetType(b2_dynamicBody);
 	}
 	else
 	{
-		BodyDef.type = b2_staticBody;
+		Body->SetType(b2_staticBody);
 	}
 }
 
-void object::update()
+void object::update(b2Vec2& iVelocity)
 {
+	//Body->SetLinearVelocity(iVelocity);
+
 
 }
 
-void object::draw(sf::RenderWindow& window, double SCALE)
+void object::draw(sf::RenderWindow& window)
 {
-	sf::Sprite Sprite;
+	//Define drawable
+	Box.setOrigin(sf::Vector2f((Width / 2), (Height / 2)));
+	Box.setSize(sf::Vector2f(Width, Height));
+	Box.setPosition(sf::Vector2f(((Body->GetPosition().x * SCALE)), ((Body->GetPosition().y * SCALE))));
+	Box.setOutlineColor(sf::Color(0, 255, 0));
+	Box.setOutlineThickness(1.0f);
+	Box.setFillColor(sf::Color::Black);
+	float degreeValue = (Body->GetAngle() * (180 / b2_pi));
+	Box.setRotation(degreeValue);
 
-	Sprite.setTexture(Texture);
-	Sprite.setOrigin((Width / 2), (Height / 2));
-	Sprite.setPosition(SCALE * Body->GetPosition().x, SCALE * Body->GetPosition().y);
-	Sprite.setRotation(Body->GetAngle() * 180 / b2_pi);
-	window.draw(Sprite);
+	window.draw(Box);
 }
