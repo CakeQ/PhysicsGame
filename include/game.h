@@ -19,8 +19,6 @@ private:
 	double SCALE;
 	int WinWidth, WinHeight;
 
-	bool started = 0;
-
 public:
 	game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE); //!< Game controller constructor
 	~game(); //!< Game controller destructor

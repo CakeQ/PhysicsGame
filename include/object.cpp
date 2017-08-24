@@ -19,7 +19,7 @@ object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iH
 	Shape.SetAsBox((Width / 2) / SCALE, (Height / 2) / SCALE);		//!< Creates a box shape. Divide your desired width and height by 2.
 	FixtureDef.density = 1.0f;										//!< Sets the density of the body
 	FixtureDef.friction = 0.7f;
-	FixtureDef.shape = &Shape;										//!< Sets the shape
+	FixtureDef.shape = &Shape;										//!< Sets the 
 	Body->CreateFixture(&FixtureDef);								//!< Apply the fixture definition
 
 }
