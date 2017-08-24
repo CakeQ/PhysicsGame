@@ -3,18 +3,26 @@
 #include <paddle.h>
 #include <object.h>
 
-game::game(int iWinWidth, int iWinHeight, double iSCALE)
-	//Player1(iWorld, (iWinWidth - 5), (iWinHeight / 2), 32.0f, 128.0f, iSCALE),
-	//Player2(iWorld, 5, (iWinHeight / 2), 32.0f, 128.0f, iSCALE)
+game::game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE) : 
+	Player1(iWorld, (iWinWidth - 25), (iWinHeight / 2), 32.0f, 128.0f, iSCALE, 1),
+	Player2(iWorld, 25, (iWinHeight / 2), 32.0f, 128.0f, iSCALE, 2)
 {
 	WinWidth = iWinWidth;
 	WinHeight = iWinHeight;
 	SCALE = iSCALE;
+
+	ObjectList.push_back(Player1);
+	ObjectList.push_back(Player2);
+
+	CreateGround(iWorld, (WinWidth / 2), (WinHeight - 20));	//Bottom Wall
+	CreateGround(iWorld, (WinWidth / 2), 20);				//Top wall
 }
 
 game::~game()
 {
-
+	for (object Object : ObjectList) {
+		ObjectList.pop_back();
+	}
 }
 
 void game::draw(sf::RenderWindow& iWindow)
@@ -24,7 +32,12 @@ void game::draw(sf::RenderWindow& iWindow)
 	}
 }
 
-/*void game::handleInput(b2World& iWorld, sf::Event & iEvent)
+void game::update()
+{
+
+}
+
+void game::handleInput(b2World& iWorld, sf::Event& iEvent)
 {
 	//Key inputs
 	if (iEvent.type == sf::Event::KeyPressed)
@@ -35,38 +48,12 @@ void game::draw(sf::RenderWindow& iWindow)
 		}
 	}
 
-	b2Vec2 Velocity;
-	Velocity.x = 0;
-	Velocity.y = 0;
-
-	//Key inputs
-	if (iEvent.type == sf::Event::KeyPressed)
-	{
-		if (iEvent.key.code == sf::Keyboard::Up)
-		{
-			Velocity.y = 5;
-			//Player1.update(Velocity);
-		}
-
-		if (iEvent.key.code == sf::Keyboard::Down)
-		{
-			Velocity.y = -5;
-		}
-
-		if (iEvent.key.code == sf::Keyboard::W)
-		{
-			Velocity.y = 5;
-		}
-
-		if (iEvent.key.code == sf::Keyboard::S)
-		{
-			Velocity.y = -5;
-		}
-	}
-}*/
+	Player1.handleInput(iEvent);
+	Player2.handleInput(iEvent);
+}
 
 void game::CreateGround(b2World& iWorld, float iX, float iY) {
-	object NewObject(iWorld, iX, iY, 1024.0f, 16.0f, SCALE);
+	object NewObject(iWorld, iX, iY, (WinWidth - 50), 16.0f, SCALE);
 	NewObject.setDynamic(0);
 	ObjectList.push_back( NewObject );
 }

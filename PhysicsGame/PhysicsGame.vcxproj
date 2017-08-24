@@ -147,11 +147,13 @@
   <ItemGroup>
     <ClCompile Include="..\include\game.cpp" />
     <ClCompile Include="..\include\object.cpp" />
+    <ClCompile Include="..\include\paddle.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\game.h" />
     <ClInclude Include="..\include\object.h" />
+    <ClInclude Include="..\include\paddle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -43,9 +43,7 @@ void object::setDynamic(bool Dynamic)
 
 void object::update(b2Vec2& iVelocity)
 {
-	//Body->SetLinearVelocity(iVelocity);
-
-
+	Body->SetLinearVelocity(iVelocity);
 }
 
 void object::draw(sf::RenderWindow& window)

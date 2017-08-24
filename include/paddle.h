@@ -1,7 +1,7 @@
 #pragma once
 #include <object.h>
 
-class paddle : object {
+class paddle : public object {
 private:
 	int Player;
 

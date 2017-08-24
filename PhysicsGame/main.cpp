@@ -14,8 +14,6 @@
 
 int main() /** Main Proc */
 {
-	std::vector<object> objectList;
-
 	const double SCALE = 30.0; //Box2D Pixel Scale
 	bool KeyCoolDown = false;
 
@@ -30,10 +28,7 @@ int main() /** Main Proc */
 	b2Vec2 Gravity(0.0f, 0.0f);
 	b2World World(Gravity);
 
-	game GameController(WinWidth, WinHeight, SCALE);
-
-	GameController.CreateGround(World, (WinWidth/2), (WinHeight-20));	//Bottom Wall
-	GameController.CreateGround(World, (WinWidth / 2), 20);			//Top wall
+	game GameController(World, WinWidth, WinHeight, SCALE);
 
 	sf::Font   MyFont;
 	sf::Uint32 MyCharset[] = { 0x4E16, 0x754C, 0x60A8, 0x597D, 0x0 }; // a set of unicode chinese characters
@@ -44,8 +39,6 @@ int main() /** Main Proc */
 	sf::Text Text;
 	Text.setFont(MyFont);
 	Text.setCharacterSize(24);
-
-	object testObject(World, 500, 500, 32.0f, 32.0f, SCALE);
 
 	while (window.isOpen())
 	{
@@ -67,7 +60,8 @@ int main() /** Main Proc */
 					GameController.CreateBox(World, 1024 / 2, 800 / 2);
 				}
 			}
-			//GameController.handleInput(World, event);
+
+			GameController.handleInput(World, event);
 		}
 
 		//Simulate the world
@@ -80,17 +74,16 @@ int main() /** Main Proc */
 
 
 		GameController.draw(window);
-		testObject.draw(window);
 
 		//window.draw(Text);
 
 		window.display();
 	}
 
-	/*for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
+	for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
 	{
 		World.DestroyBody(BodyIterator);
-	}*/
+	}
 
 	return 0;
 }

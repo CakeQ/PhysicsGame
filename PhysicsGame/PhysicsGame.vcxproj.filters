@@ -24,12 +24,18 @@
     <ClCompile Include="..\include\object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\paddle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\paddle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
