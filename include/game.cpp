@@ -1,11 +1,15 @@
 #include <Box2D\Box2D.h>
 #include <game.h>
 #include <paddle.h>
+#include <pong.h>
 #include <object.h>
 
+#include <iostream>
+
 game::game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE) : 
-	Player1(iWorld, (iWinWidth - 25), (iWinHeight / 2), 32.0f, 128.0f, iSCALE, 1),
-	Player2(iWorld, 25, (iWinHeight / 2), 32.0f, 128.0f, iSCALE, 2)
+	Player1(iWorld, (iWinWidth - 25), (iWinHeight / 2), iSCALE, 1),
+	Player2(iWorld, 25, (iWinHeight / 2), iSCALE, 2),
+	Pong(iWorld, (WinWidth/2), (WinHeight/2), iSCALE)
 {
 	WinWidth = iWinWidth;
 	WinHeight = iWinHeight;
@@ -14,8 +18,10 @@ game::game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE) :
 	ObjectList.push_back(Player1);
 	ObjectList.push_back(Player2);
 
-	CreateGround(iWorld, (WinWidth / 2), (WinHeight - 20));	//Bottom Wall
-	CreateGround(iWorld, (WinWidth / 2), 20);				//Top wall
+	CreateWall(iWorld, (WinWidth / 2), (WinHeight - 20));	//Bottom Wall
+	CreateWall(iWorld, (WinWidth / 2), 20);					//Top wall
+
+	Pong = CreatePong(iWorld);
 }
 
 game::~game()
@@ -34,7 +40,8 @@ void game::draw(sf::RenderWindow& iWindow)
 
 void game::update()
 {
-
+	Player1.update();
+	Player2.update();
 }
 
 void game::handleInput(b2World& iWorld, sf::Event& iEvent)
@@ -44,7 +51,10 @@ void game::handleInput(b2World& iWorld, sf::Event& iEvent)
 	{
 		if (iEvent.key.code == sf::Keyboard::Space)
 		{
-				CreateBox(iWorld, 1024/2, 800/2);
+			if (!started)
+				Pong.startMoving();
+				std::cout << "Start" << std::endl;
+			started = 1;
 		}
 	}
 
@@ -52,14 +62,19 @@ void game::handleInput(b2World& iWorld, sf::Event& iEvent)
 	Player2.handleInput(iEvent);
 }
 
-void game::CreateGround(b2World& iWorld, float iX, float iY) {
-	object NewObject(iWorld, iX, iY, (WinWidth - 50), 16.0f, SCALE);
+void game::CreateWall(b2World& iWorld, float iX, float iY) {
+	object NewObject(iWorld, iX, iY, (WinWidth - 25), 16.0f, SCALE);
 	NewObject.setDynamic(0);
 	ObjectList.push_back( NewObject );
 }
 
 void game::CreateBox(b2World& iWorld, int iX, int iY) {
 	object NewObject(iWorld, iX, iY, 32.0f, 32.0f, SCALE);
-	NewObject.setDynamic(1);
 	ObjectList.push_back( NewObject );
 };
+
+pong game::CreatePong(b2World& iWorld) {
+	pong NewPong(iWorld, (WinWidth/2), (WinHeight/2), SCALE);
+	ObjectList.push_back(NewPong);
+	return NewPong;
+}

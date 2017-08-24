@@ -1,10 +1,21 @@
 #include "paddle.h"
-#include <iostream>
 
-paddle::paddle(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, double iSCALE, int iPlayer) : object(iWorld, iXPos, iYPos, iWidth, iHeight, iSCALE)
+paddle::paddle(b2World& iWorld, float iXPos, float iYPos, double iSCALE, int iPlayer) : object(iWorld, iXPos, iYPos, 32.0f, 128.0f, iSCALE)
 {
 	Player = iPlayer;
+
+	if (Player == 1) {
+		UpKey = sf::Keyboard::Up;
+		DownKey = sf::Keyboard::Down;
+	}
+	else
+	{
+		UpKey = sf::Keyboard::W;
+		DownKey = sf::Keyboard::S;
+	}
+
 	getBody()->SetFixedRotation(1);
+	getBody()->SetLinearDamping(9);
 }
 
 paddle::~paddle()
@@ -12,43 +23,41 @@ paddle::~paddle()
 
 }
 
+void paddle::update() {
+	if (Moving != 0) 
+	{
+		b2Vec2 Velocity = getBody()->GetLinearVelocity();
+		Velocity.y = 15 * Moving;
+		move(Velocity);
+	}
+}
+
 void paddle::handleInput(sf::Event& iEvent)
 {
-	b2Vec2 Velocity;
-	Velocity.x = 0;
-	Velocity.y = 0;
-
 	//Key inputs
 	if (iEvent.type == sf::Event::KeyPressed)
 	{
-		if (Player == 1) 
+		if (iEvent.key.code == UpKey)
 		{
-			if (iEvent.key.code == sf::Keyboard::Up)
-			{
-				Velocity.y = 10;
-				std::cout << "Player 1 Move up" << std::endl;
-			}
-		
-			if (iEvent.key.code == sf::Keyboard::Down)
-			{
-				Velocity.y = -10;
-				std::cout << "Player 1 Move down" << std::endl;
-			}
+			Moving = -1;
 		}
-		if (Player == 2)
-		{
-			if (iEvent.key.code == sf::Keyboard::W)
-			{
-				Velocity.y = 10;
-				std::cout << "Player 2 Move up" << std::endl;
-			}
 
-			if (iEvent.key.code == sf::Keyboard::S)
-			{
-				Velocity.y = -10;
-				std::cout << "Player 2 Move down" << std::endl;
-			}
+		else if (iEvent.key.code == DownKey)
+		{
+			Moving = 1;
 		}
-		update(Velocity);
+	}
+
+	else if (iEvent.type == sf::Event::KeyReleased)
+	{
+		if (iEvent.key.code == UpKey) 
+		{
+			Moving = 0;
+		}
+
+		if (iEvent.key.code == DownKey)
+		{
+			Moving = 0;
+		}
 	}
 }

@@ -30,6 +30,8 @@ public:
 	b2Body* getBody() { return Body; };
 
 	void setDynamic(bool Dynamic);
-	void update(b2Vec2& iVelocity);	//!< Update object position
+	void update();
+	void move(b2Vec2 & iVelocity);
+	//!< Update object position
 	void draw(sf::RenderWindow& window);	//!< Draw object on screen
 };

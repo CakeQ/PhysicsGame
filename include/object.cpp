@@ -41,7 +41,12 @@ void object::setDynamic(bool Dynamic)
 	}
 }
 
-void object::update(b2Vec2& iVelocity)
+void object::update()
+{
+
+}
+
+void object::move(b2Vec2& iVelocity)
 {
 	Body->SetLinearVelocity(iVelocity);
 }
