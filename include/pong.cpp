@@ -1,5 +1,4 @@
 #include "pong.h"
-#include <iostream>
 
 pong::pong(b2World& iWorld, float iXPos, float iYPos, double iSCALE) : object(iWorld, iXPos, iYPos, 32.0f, 32.0f, iSCALE)
 {

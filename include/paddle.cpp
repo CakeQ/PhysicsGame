@@ -1,5 +1,4 @@
 #include "paddle.h"
-#include <iostream>
 
 paddle::paddle(b2World& iWorld, float iXPos, float iYPos, double iSCALE, int iPlayer) : object(iWorld, iXPos, iYPos, 32.0f, 128.0f, iSCALE)
 {
@@ -30,7 +29,6 @@ void paddle::update() {
 		b2Vec2 Velocity = getBody()->GetLinearVelocity();
 		Velocity.y = 15 * Moving;
 		move(Velocity);
-		std::cout << "moving Paddle" << std::endl;
 	}
 }
 

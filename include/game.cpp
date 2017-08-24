@@ -4,8 +4,6 @@
 #include <pong.h>
 #include <object.h>
 
-#include <iostream>
-
 game::game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE) : 
 	Player1(iWorld, (iWinWidth - 25), (iWinHeight / 2), iSCALE, 1),
 	Player2(iWorld, 25, (iWinHeight / 2), iSCALE, 2),
