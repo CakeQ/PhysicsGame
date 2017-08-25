@@ -75,9 +75,12 @@ int main()																										//!< Main loop that handles the entire progr
 
 	}
 
-	for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())	//!<
+	for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
 	{
+		if (!BodyIterator)
+			return 0;
 		World.DestroyBody(BodyIterator);
+	
 	}
 
 	return 0;
