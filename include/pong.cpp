@@ -24,15 +24,19 @@ void pong::handleInput(sf::Event& iEvent)
 void pong::startMoving()
 {
 	if (!Moving) {
-		if (((rand() % 2) + 1) == 1)
-			Velocity.x = 8;
-		else
-			Velocity.x = -8;
+		if (((rand() % 2) + 1) == 1) {
+			Velocity.x = BaseSpeed;
+			Direction = 1;
+		}
+		else {
+			Velocity.x = -BaseSpeed;
+			Direction = -1;
+		}
 
-		/*if (((rand() % 2) + 1) == 1)
-			Velocity.y = 8;
+		if (((rand() % 2) + 1) == 1)
+			Velocity.y = BaseSpeed;
 		else
-			Velocity.y = -8;*/
+			Velocity.y = -BaseSpeed;
 
 		move(Velocity);
 	}
@@ -41,10 +45,24 @@ void pong::startMoving()
 
 void pong::update()
 {
-
+	b2Vec2 Speed = getBody()->GetLinearVelocity();
+	if (Moving == 1) {
+		if ((Speed.x < BaseSpeed) && (Speed.x > 0)) {
+			Speed.x = BaseSpeed;
+			Direction = 1;
+		}
+		if ((Speed.x > -BaseSpeed) && (Speed.x < 0)) {
+			Speed.x = -BaseSpeed;
+			Direction = -1;
+		}
+		if ((Speed.x) == 0)
+			Speed.x = BaseSpeed * Direction;
+		move(Speed);
+	}
 }
 
 void pong::move(b2Vec2& iVelocity)
 {
 	getBody()->SetLinearVelocity(iVelocity);
+
 }
