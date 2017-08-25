@@ -1,5 +1,5 @@
 /**
-@File game.h
+* \file game.h
 */
 
 //! Game class.

@@ -1,9 +1,29 @@
 /**
-@File main.cpp
+* \file main.cpp
 */
 
-/**
-* \mainpage Physics Game
+/*! \mainpage Pong Index Page Documentation
+*
+* \section intro_sec Introduction
+*
+* The project is a simple pong clone created in C++ using SFML and Box2D. The project was created entirely by Daniel Thompson for De Montfort University, Student number P15230940.
+*
+* \section running_sec Running The Game
+*
+* In order to run the game, launc PhysicsGame.exe located in the Debug folder.
+*
+* \section controls_sec Controls
+*
+* In order to start the game, press the space bar to spawn the pong ball. Once a player has scored, press space bar again to spawn another pong to continue. To exit the game, press the X button in the top right corner.
+*
+* \subsection player1 Player 1 Controls
+*
+* Player 1 is controlled as follows: Press the up arrow to move up, and the down arrow to move down.
+*
+* \subsection player2 Player 2 Controls
+*
+* Player 2 is controlled as follows: Press the W key to move up, and the S key to move down.
+*
 */
 
 #include <SFML\Graphics.hpp>

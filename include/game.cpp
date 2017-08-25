@@ -1,3 +1,7 @@
+/**
+* \file game.cpp
+*/
+
 #include <Box2D\Box2D.h>
 #include <game.h>
 #include <paddle.h>

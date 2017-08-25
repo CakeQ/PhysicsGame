@@ -1,5 +1,5 @@
 /**
-@File object.h
+* \file object.h
 */
 
 //! Object class.

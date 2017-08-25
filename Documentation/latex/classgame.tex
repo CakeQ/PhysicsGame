@@ -24,18 +24,18 @@ virtual void \hyperlink{classgame_a9733b814ab29dd4407441c17fa58b187}{handle\+Inp
 \begin{DoxyCompactList}\small\item\em Handles all input in the game. \end{DoxyCompactList}\item 
 int \hyperlink{classgame_a5297f3ca1e18dfc8c4efd718b54b4982}{check\+Victory} ()
 \begin{DoxyCompactList}\small\item\em Checks for player victory. \end{DoxyCompactList}\item 
-void \hyperlink{classgame_acdaf7a10e6f337765c240aa00c98bb29}{Create\+Wall} (b2\+World \&i\+World, float X, float Y)
+void \hyperlink{classgame_a0b6f017a6d6d053ae89bc2ac3cbaa1aa}{center\+Text\+Pos} (sf\+::\+Text \&i\+Text, float i\+Actual\+Pos)
+\begin{DoxyCompactList}\small\item\em Centers text. \end{DoxyCompactList}\item 
+void \hyperlink{classgame_ae6f0753388b6ac52a3efd7073fc55934}{create\+Wall} (b2\+World \&i\+World, float X, float Y)
 \begin{DoxyCompactList}\small\item\em Creates horizontal walls. \end{DoxyCompactList}\item 
-void \hyperlink{classgame_ae657176251e07dae30036032635322fc}{Create\+Box} (b2\+World \&i\+World, int MouseX, int MouseY)
+void \hyperlink{classgame_a8d6319c1da22e9d41292feb3091bf562}{create\+Box} (b2\+World \&i\+World, int MouseX, int MouseY)
 \begin{DoxyCompactList}\small\item\em Creates test boxes (Not used within game normally). \end{DoxyCompactList}\item 
-\hyperlink{classpong}{pong} \hyperlink{classgame_aa1ba656bd20a57049233b02d247ff24b}{Create\+Pong} (b2\+World \&i\+World)
+\hyperlink{classpong}{pong} \hyperlink{classgame_a0f2725bdacb5162d7570a04cf8648490}{create\+Pong} (b2\+World \&i\+World)
 \begin{DoxyCompactList}\small\item\em Creates Pong ball. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Game class. 
-
-\hyperlink{game_8h}{game.\+h}
 
 Game class that holds all items within the pong game. Handles all events such as victory conditions, spawning pongs and spawning everything on run. Created by Daniel Thompson, P15230940. 
 
@@ -63,6 +63,16 @@ Game controller destructor.
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classgame_a0b6f017a6d6d053ae89bc2ac3cbaa1aa}\label{classgame_a0b6f017a6d6d053ae89bc2ac3cbaa1aa}} 
+\index{game@{game}!center\+Text\+Pos@{center\+Text\+Pos}}
+\index{center\+Text\+Pos@{center\+Text\+Pos}!game@{game}}
+\subsubsection{\texorpdfstring{center\+Text\+Pos()}{centerTextPos()}}
+{\footnotesize\ttfamily void game\+::center\+Text\+Pos (\begin{DoxyParamCaption}\item[{sf\+::\+Text \&}]{i\+Text,  }\item[{float}]{i\+Actual\+Pos }\end{DoxyParamCaption})}
+
+
+
+Centers text. 
+
 \mbox{\Hypertarget{classgame_a5297f3ca1e18dfc8c4efd718b54b4982}\label{classgame_a5297f3ca1e18dfc8c4efd718b54b4982}} 
 \index{game@{game}!check\+Victory@{check\+Victory}}
 \index{check\+Victory@{check\+Victory}!game@{game}}
@@ -73,31 +83,31 @@ Game controller destructor.
 
 Checks for player victory. 
 
-\mbox{\Hypertarget{classgame_ae657176251e07dae30036032635322fc}\label{classgame_ae657176251e07dae30036032635322fc}} 
-\index{game@{game}!Create\+Box@{Create\+Box}}
-\index{Create\+Box@{Create\+Box}!game@{game}}
-\subsubsection{\texorpdfstring{Create\+Box()}{CreateBox()}}
-{\footnotesize\ttfamily void game\+::\+Create\+Box (\begin{DoxyParamCaption}\item[{b2\+World \&}]{i\+World,  }\item[{int}]{MouseX,  }\item[{int}]{MouseY }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classgame_a8d6319c1da22e9d41292feb3091bf562}\label{classgame_a8d6319c1da22e9d41292feb3091bf562}} 
+\index{game@{game}!create\+Box@{create\+Box}}
+\index{create\+Box@{create\+Box}!game@{game}}
+\subsubsection{\texorpdfstring{create\+Box()}{createBox()}}
+{\footnotesize\ttfamily void game\+::create\+Box (\begin{DoxyParamCaption}\item[{b2\+World \&}]{i\+World,  }\item[{int}]{MouseX,  }\item[{int}]{MouseY }\end{DoxyParamCaption})}
 
 
 
 Creates test boxes (Not used within game normally). 
 
-\mbox{\Hypertarget{classgame_aa1ba656bd20a57049233b02d247ff24b}\label{classgame_aa1ba656bd20a57049233b02d247ff24b}} 
-\index{game@{game}!Create\+Pong@{Create\+Pong}}
-\index{Create\+Pong@{Create\+Pong}!game@{game}}
-\subsubsection{\texorpdfstring{Create\+Pong()}{CreatePong()}}
-{\footnotesize\ttfamily \hyperlink{classpong}{pong} game\+::\+Create\+Pong (\begin{DoxyParamCaption}\item[{b2\+World \&}]{i\+World }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classgame_a0f2725bdacb5162d7570a04cf8648490}\label{classgame_a0f2725bdacb5162d7570a04cf8648490}} 
+\index{game@{game}!create\+Pong@{create\+Pong}}
+\index{create\+Pong@{create\+Pong}!game@{game}}
+\subsubsection{\texorpdfstring{create\+Pong()}{createPong()}}
+{\footnotesize\ttfamily \hyperlink{classpong}{pong} game\+::create\+Pong (\begin{DoxyParamCaption}\item[{b2\+World \&}]{i\+World }\end{DoxyParamCaption})}
 
 
 
 Creates Pong ball. 
 
-\mbox{\Hypertarget{classgame_acdaf7a10e6f337765c240aa00c98bb29}\label{classgame_acdaf7a10e6f337765c240aa00c98bb29}} 
-\index{game@{game}!Create\+Wall@{Create\+Wall}}
-\index{Create\+Wall@{Create\+Wall}!game@{game}}
-\subsubsection{\texorpdfstring{Create\+Wall()}{CreateWall()}}
-{\footnotesize\ttfamily void game\+::\+Create\+Wall (\begin{DoxyParamCaption}\item[{b2\+World \&}]{i\+World,  }\item[{float}]{X,  }\item[{float}]{Y }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classgame_ae6f0753388b6ac52a3efd7073fc55934}\label{classgame_ae6f0753388b6ac52a3efd7073fc55934}} 
+\index{game@{game}!create\+Wall@{create\+Wall}}
+\index{create\+Wall@{create\+Wall}!game@{game}}
+\subsubsection{\texorpdfstring{create\+Wall()}{createWall()}}
+{\footnotesize\ttfamily void game\+::create\+Wall (\begin{DoxyParamCaption}\item[{b2\+World \&}]{i\+World,  }\item[{float}]{X,  }\item[{float}]{Y }\end{DoxyParamCaption})}
 
 
 

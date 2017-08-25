@@ -1,3 +1,7 @@
+/**
+* \file object.cpp
+*/
+
 #include <object.h>
 
 object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, int iRestitution, double iSCALE)

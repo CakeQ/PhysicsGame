@@ -1,5 +1,5 @@
 /**
-@File paddle.h
+* \file paddle.h
 */
 
 //! Paddle class.

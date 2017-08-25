@@ -1,7 +1,8 @@
 var searchData=
 [
+  ['centertextpos',['centerTextPos',['../classgame.html#a0b6f017a6d6d053ae89bc2ac3cbaa1aa',1,'game']]],
   ['checkvictory',['checkVictory',['../classgame.html#a5297f3ca1e18dfc8c4efd718b54b4982',1,'game']]],
-  ['createbox',['CreateBox',['../classgame.html#ae657176251e07dae30036032635322fc',1,'game']]],
-  ['createpong',['CreatePong',['../classgame.html#aa1ba656bd20a57049233b02d247ff24b',1,'game']]],
-  ['createwall',['CreateWall',['../classgame.html#acdaf7a10e6f337765c240aa00c98bb29',1,'game']]]
+  ['createbox',['createBox',['../classgame.html#a8d6319c1da22e9d41292feb3091bf562',1,'game']]],
+  ['createpong',['createPong',['../classgame.html#a0f2725bdacb5162d7570a04cf8648490',1,'game']]],
+  ['createwall',['createWall',['../classgame.html#ae6f0753388b6ac52a3efd7073fc55934',1,'game']]]
 ];

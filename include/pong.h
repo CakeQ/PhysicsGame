@@ -1,5 +1,5 @@
 /**
-@File pong.h
+* \file pong.h
 */
 
 //! Pong class.
