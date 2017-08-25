@@ -12,41 +12,34 @@
 #include <object.h>
 #include <vector>
 
-int main() /** Main Proc */
+int main()																										//!< Main loop that handles the entire program
 {
 	const double SCALE = 30.0; //Box2D Pixel Scale
 
-	//Window properties
+	//Set window properties.
 	int WinWidth = 1024;
 	int WinHeight = 800;
 
+	//Load background image.
 	sf::Texture BackgroundTexture;
-
 	if (!BackgroundTexture.loadFromFile("../img/background.png"))
 		return -1;
 
+	//Set background image.
 	sf::Sprite Background;
 	Background.setTexture(BackgroundTexture);
 
 	sf::RenderWindow Window(sf::VideoMode(WinWidth, WinHeight), "Physics Game");
 	Window.setFramerateLimit(60);
 
-	//Box2D World setup
+	//Box2D World setup.
 	b2Vec2 Gravity(0.0f, 0.0f);
 	b2World World(Gravity);
 
+	//Initialise game controller.
 	game GameController(World, WinWidth, WinHeight, SCALE);
 
-	sf::Font   MyFont;
-	sf::Uint32 MyCharset[] = { 0x4E16, 0x754C, 0x60A8, 0x597D, 0x0 }; // a set of unicode chinese characters
-	if (!MyFont.loadFromFile("C:/Windows/Fonts/arial.ttf"))
-	{
-		// Error...
-	}
-	sf::Text Text;
-	Text.setFont(MyFont);
-	Text.setCharacterSize(24);
-
+	//Window loop.
 	while (Window.isOpen())
 	{
 		sf::Event event;
@@ -62,27 +55,27 @@ int main() /** Main Proc */
 			GameController.handleInput(World, event);
 		}
 
-		//Simulate the world
+		//Simulate the world.
 		World.Step(1 / 60.0f, 8, 3);
 
+		//Update game controller.
 		GameController.update(World);
 
+		//Clear window.
 		Window.clear(sf::Color::Black);
 
+		//Draw background.
 		Window.draw(Background);
 
-		int BodyCount = World.GetBodyCount();
-		Text.setString(std::to_string(BodyCount));
-
-
+		//Draw game.
 		GameController.draw(Window);
 
-		//Window.draw(Text);
-
+		//Display window to screen.
 		Window.display();
+
 	}
 
-	for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
+	for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())	//!<
 	{
 		World.DestroyBody(BodyIterator);
 	}

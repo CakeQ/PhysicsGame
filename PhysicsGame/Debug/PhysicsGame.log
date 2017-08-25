@@ -1,2 +1,29 @@
-﻿  PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.exe
+﻿  game.cpp
+d:\documents\github\physicsgame\include\game.cpp(12): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(45): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\documents\github\physicsgame\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\documents\github\physicsgame\include\game.cpp(52): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\documents\github\physicsgame\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\documents\github\physicsgame\include\game.cpp(59): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\documents\github\physicsgame\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\documents\github\physicsgame\include\game.cpp(65): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\documents\github\physicsgame\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\documents\github\physicsgame\include\game.cpp(71): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\documents\github\physicsgame\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\documents\github\physicsgame\include\game.cpp(176): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(182): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\documents\github\physicsgame\include\game.cpp(187): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  pong.cpp
+  PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.exe
   PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.pdb (Full PDB)

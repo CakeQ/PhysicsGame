@@ -1,7 +1,5 @@
 #include <object.h>
 
-#include <iostream>
-
 object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, int iRestitution, double iSCALE)
 {	
 	Width = iWidth;
@@ -9,12 +7,12 @@ object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iH
 
 	SCALE = iSCALE;
 
-	//Define body
+	//Define body.
 	BodyDef.position = b2Vec2(iXPos / SCALE, iYPos / SCALE);			
 	BodyDef.type = b2_dynamicBody;
 	Body = iWorld.CreateBody(&BodyDef);
 
-	//Define shape
+	//Define shape.
 	Shape.SetAsBox((Width / 2) / SCALE, (Height / 2) / SCALE);		
 	FixtureDef.density = 1.0f;										
 	FixtureDef.friction = 0.7f;
@@ -37,11 +35,6 @@ void object::setDynamic(bool Dynamic)
 	}
 }
 
-void object::update()
-{
-
-}
-
 void object::move(b2Vec2& iVelocity)
 {
 	Body->SetLinearVelocity(iVelocity);
@@ -57,7 +50,7 @@ b2Vec2 object::getPos()
 
 void object::draw(sf::RenderWindow& window)
 {
-	//Define drawable
+	//Define drawable.
 	Box.setOrigin(sf::Vector2f((Width / 2), (Height / 2)));
 	Box.setSize(sf::Vector2f(Width, Height));
 	Box.setPosition(sf::Vector2f(((Body->GetPosition().x * SCALE)), ((Body->GetPosition().y * SCALE))));
@@ -67,5 +60,6 @@ void object::draw(sf::RenderWindow& window)
 	float degreeValue = (Body->GetAngle() * (180 / b2_pi));
 	Box.setRotation(degreeValue);
 
+	//Draw drawable.
 	window.draw(Box);
 }

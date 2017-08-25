@@ -32,7 +32,6 @@ public:
 	b2Body*				getBody() { return Body; };																			//!< Returns Box2D of object.
 	b2Vec2				getPos();																							//!< Returns world position.
 	void				setDynamic(bool Dynamic);																			//!< Sets whether or not the Box2D body is dynamic.
-	void				update();																							//!< Updates the object.
 	void				move(b2Vec2 & iVelocity);																			//!< Sets the object's velocity.
 	void				draw(sf::RenderWindow& window);																		//!< Draws object on screen.
 };

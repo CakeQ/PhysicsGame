@@ -33,6 +33,7 @@ void pong::startMoving()
 
 void pong::update()
 {
+	//Maintains horizontal pong speed.
 	b2Vec2 Speed = getBody()->GetLinearVelocity();
 	if (Moving == 1) {
 		if ((Speed.x < BaseSpeed) && (Speed.x > 0)) {

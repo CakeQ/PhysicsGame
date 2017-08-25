@@ -1,0 +1,119 @@
+\hypertarget{classobject}{}\section{object Class Reference}
+\label{classobject}\index{object@{object}}
+
+
+Object class.  
+
+
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classobject}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classobject_a6444f1addfcba46e8a38e3a10afc5b55}{object} (b2\+World \&i\+World, float i\+X\+Pos, float i\+Y\+Pos, float i\+Width, float i\+Height, int i\+Restitution, double i\+S\+C\+A\+LE)
+\begin{DoxyCompactList}\small\item\em Object constructor. \end{DoxyCompactList}\item 
+b2\+Body $\ast$ \hyperlink{classobject_ae2e614e0e6af97805323193da7a1e7ff}{get\+Body} ()
+\item 
+b2\+Vec2 \hyperlink{classobject_a505665c0df5c44d5dfc77881fe5d95a4}{get\+Pos} ()
+\begin{DoxyCompactList}\small\item\em Returns Box2D of object. \end{DoxyCompactList}\item 
+void \hyperlink{classobject_a872e3c1ff75e786a58389852aad28a65}{set\+Dynamic} (bool Dynamic)
+\begin{DoxyCompactList}\small\item\em Sets whether or not the Box2D body is dynamic. \end{DoxyCompactList}\item 
+void \hyperlink{classobject_a7fdffa65c5bb1322d322d7e7056fa31f}{update} ()
+\begin{DoxyCompactList}\small\item\em Updates the object. \end{DoxyCompactList}\item 
+void \hyperlink{classobject_a74da589c4536cacfd76fa230a4dbee9e}{move} (b2\+Vec2 \&i\+Velocity)
+\begin{DoxyCompactList}\small\item\em Sets the object\textquotesingle{}s velocity. \end{DoxyCompactList}\item 
+void \hyperlink{classobject_a844b4128957b29e24370efe2d2cb3dca}{draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draws object on screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Object class. 
+
+\hyperlink{object_8h}{object.\+h}
+
+Object class that contains basic structure of any physics object within the game. supports rendering and collision. Created by Daniel Thompson, P15230940. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classobject_a6444f1addfcba46e8a38e3a10afc5b55}\label{classobject_a6444f1addfcba46e8a38e3a10afc5b55}} 
+\index{object@{object}!object@{object}}
+\index{object@{object}!object@{object}}
+\subsubsection{\texorpdfstring{object()}{object()}}
+{\footnotesize\ttfamily object\+::object (\begin{DoxyParamCaption}\item[{b2\+World \&}]{i\+World,  }\item[{float}]{i\+X\+Pos,  }\item[{float}]{i\+Y\+Pos,  }\item[{float}]{i\+Width,  }\item[{float}]{i\+Height,  }\item[{int}]{i\+Restitution,  }\item[{double}]{i\+S\+C\+A\+LE }\end{DoxyParamCaption})}
+
+
+
+Object constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classobject_a844b4128957b29e24370efe2d2cb3dca}\label{classobject_a844b4128957b29e24370efe2d2cb3dca}} 
+\index{object@{object}!draw@{draw}}
+\index{draw@{draw}!object@{object}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void object\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Draws object on screen. 
+
+\mbox{\Hypertarget{classobject_ae2e614e0e6af97805323193da7a1e7ff}\label{classobject_ae2e614e0e6af97805323193da7a1e7ff}} 
+\index{object@{object}!get\+Body@{get\+Body}}
+\index{get\+Body@{get\+Body}!object@{object}}
+\subsubsection{\texorpdfstring{get\+Body()}{getBody()}}
+{\footnotesize\ttfamily b2\+Body$\ast$ object\+::get\+Body (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classobject_a505665c0df5c44d5dfc77881fe5d95a4}\label{classobject_a505665c0df5c44d5dfc77881fe5d95a4}} 
+\index{object@{object}!get\+Pos@{get\+Pos}}
+\index{get\+Pos@{get\+Pos}!object@{object}}
+\subsubsection{\texorpdfstring{get\+Pos()}{getPos()}}
+{\footnotesize\ttfamily b2\+Vec2 object\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns Box2D of object. 
+
+Returns world position. \mbox{\Hypertarget{classobject_a74da589c4536cacfd76fa230a4dbee9e}\label{classobject_a74da589c4536cacfd76fa230a4dbee9e}} 
+\index{object@{object}!move@{move}}
+\index{move@{move}!object@{object}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void object\+::move (\begin{DoxyParamCaption}\item[{b2\+Vec2 \&}]{i\+Velocity }\end{DoxyParamCaption})}
+
+
+
+Sets the object\textquotesingle{}s velocity. 
+
+\mbox{\Hypertarget{classobject_a872e3c1ff75e786a58389852aad28a65}\label{classobject_a872e3c1ff75e786a58389852aad28a65}} 
+\index{object@{object}!set\+Dynamic@{set\+Dynamic}}
+\index{set\+Dynamic@{set\+Dynamic}!object@{object}}
+\subsubsection{\texorpdfstring{set\+Dynamic()}{setDynamic()}}
+{\footnotesize\ttfamily void object\+::set\+Dynamic (\begin{DoxyParamCaption}\item[{bool}]{Dynamic }\end{DoxyParamCaption})}
+
+
+
+Sets whether or not the Box2D body is dynamic. 
+
+\mbox{\Hypertarget{classobject_a7fdffa65c5bb1322d322d7e7056fa31f}\label{classobject_a7fdffa65c5bb1322d322d7e7056fa31f}} 
+\index{object@{object}!update@{update}}
+\index{update@{update}!object@{object}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void object\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the object. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Documents/\+Git\+Hub/\+Physics\+Game/include/\hyperlink{object_8h}{object.\+h}\item 
+D\+:/\+Documents/\+Git\+Hub/\+Physics\+Game/include/\hyperlink{object_8cpp}{object.\+cpp}\end{DoxyCompactItemize}
