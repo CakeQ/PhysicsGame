@@ -15,6 +15,7 @@ private:
 	std::vector<object> ObjectList;
 	paddle Player1, Player2;
 	pong Pong;
+	bool Started;
 
 	double SCALE;
 	int WinWidth, WinHeight;
@@ -26,6 +27,8 @@ public:
 	virtual void draw(sf::RenderWindow& iWindow);
 	virtual void update();
 	virtual void handleInput(b2World& iWorld, sf::Event& Event);
+
+	int checkVictory();
 
 	void CreateWall(b2World& iWorld, float X, float Y);
 	void CreateBox(b2World& iWorld, int MouseX, int MouseY);

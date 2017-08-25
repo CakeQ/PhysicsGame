@@ -24,11 +24,12 @@ int main() /** Main Proc */
 
 	if (!BackgroundTexture.loadFromFile("../img/background.png"))
 		return -1;
+
 	sf::Sprite Background;
 	Background.setTexture(BackgroundTexture);
 
-	sf::RenderWindow window(sf::VideoMode(WinWidth, WinHeight), "Physics Game");
-	window.setFramerateLimit(60);
+	sf::RenderWindow Window(sf::VideoMode(WinWidth, WinHeight), "Physics Game");
+	Window.setFramerateLimit(60);
 
 	//Box2D World setup
 	b2Vec2 Gravity(0.0f, 0.0f);
@@ -46,16 +47,16 @@ int main() /** Main Proc */
 	Text.setFont(MyFont);
 	Text.setCharacterSize(24);
 
-	while (window.isOpen())
+	while (Window.isOpen())
 	{
 		sf::Event event;
 
-		while (window.pollEvent(event))
+		while (Window.pollEvent(event))
 		{
 			//Closing the window
 			if (event.type == sf::Event::Closed)
 			{
-				window.close();
+				Window.close();
 			}
 
 			GameController.handleInput(World, event);
@@ -66,19 +67,19 @@ int main() /** Main Proc */
 
 		GameController.update();
 
-		window.clear(sf::Color::Black);
+		Window.clear(sf::Color::Black);
 
-		window.draw(Background);
+		Window.draw(Background);
 
-		int bodycount = World.GetBodyCount();
-		Text.setString(std::to_string(bodycount));
+		int BodyCount = World.GetBodyCount();
+		Text.setString(std::to_string(BodyCount));
 
 
-		GameController.draw(window);
+		GameController.draw(Window);
 
-		//window.draw(Text);
+		//Window.draw(Text);
 
-		window.display();
+		Window.display();
 	}
 
 	for (b2Body* BodyIterator = World.GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())

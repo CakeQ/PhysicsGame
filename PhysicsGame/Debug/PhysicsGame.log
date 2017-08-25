@@ -1,3 +1,5 @@
-﻿  pong.cpp
+﻿  paddle.cpp
+d:\documents\github\physicsgame\include\paddle.cpp(33): warning C4244: '=': conversion from 'int' to 'float32', possible loss of data
+d:\documents\github\physicsgame\include\paddle.cpp(37): warning C4244: 'initializing': conversion from 'float32' to 'int', possible loss of data
   PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.exe
   PhysicsGame.vcxproj -> D:\Documents\GitHub\PhysicsGame\Debug\PhysicsGame.pdb (Full PDB)

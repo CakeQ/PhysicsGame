@@ -1,8 +1,11 @@
 #include "paddle.h"
 
+#include <iostream>
+
 paddle::paddle(b2World& iWorld, float iXPos, float iYPos, double iSCALE, int iPlayer) : object(iWorld, iXPos, iYPos, 32.0f, 128.0f, 1, iSCALE)
 {
 	Player = iPlayer;
+	StartPos = iXPos;
 
 	if (Player == 1) {
 		UpKey = sf::Keyboard::Up;
@@ -29,6 +32,18 @@ void paddle::update() {
 		b2Vec2 Velocity = getBody()->GetLinearVelocity();
 		Velocity.y = 15 * Moving;
 		move(Velocity);
+	}
+
+	int CurrentXPos = getBody()->GetPosition().x * 30;
+
+	if (((CurrentXPos > (StartPos + 1))) || ((CurrentXPos < (StartPos - 1)))) {
+		b2Vec2 ResetSpeed;
+		ResetSpeed.x = (StartPos - CurrentXPos) * 10;
+		ResetSpeed.y = 0;
+
+		getBody()->ApplyForceToCenter(ResetSpeed,1);
+
+		std::cout << StartPos - getBody()->GetPosition().x << std::endl;
 	}
 }
 

@@ -9,18 +9,6 @@ pong::pong(b2World& iWorld, float iXPos, float iYPos, double iSCALE) : object(iW
 	Velocity.y = 0;
 }
 
-void pong::handleInput(sf::Event& iEvent)
-{
-	//Key inputs
-	if (iEvent.type == sf::Event::KeyPressed)
-	{
-		if (iEvent.key.code == sf::Keyboard::Space)
-		{
-			startMoving();
-		}
-	}
-}
-
 void pong::startMoving()
 {
 	if (!Moving) {

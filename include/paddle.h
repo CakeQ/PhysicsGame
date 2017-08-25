@@ -4,6 +4,7 @@
 class paddle : public object {
 private:
 	int Player, Moving = 0, UpKey, DownKey;
+	float StartPos;
 
 public:
 	paddle(b2World& iWorld, float iXPos, float iYPos, double iSCALE, int iPlayer);

@@ -23,6 +23,7 @@ object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iH
 	FixtureDef.friction = 0.7f;
 	FixtureDef.shape = &Shape;										//!< Sets the 
 	FixtureDef.restitution = iRestitution;
+
 	Body->CreateFixture(&FixtureDef);								//!< Apply the fixture definition
 
 }

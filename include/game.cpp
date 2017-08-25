@@ -19,7 +19,7 @@ game::game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE) :
 	CreateWall(iWorld, (WinWidth / 2), (WinHeight - 20));	//Bottom Wall
 	CreateWall(iWorld, (WinWidth / 2), 20);					//Top wall
 
-	Pong = CreatePong(iWorld);
+	Started = 0;
 }
 
 game::~game()
@@ -38,6 +38,9 @@ void game::draw(sf::RenderWindow& iWindow)
 
 void game::update()
 {
+	if (!Pong.getBody()) {
+		Started = 0;
+	}
 	Player1.update();
 	Player2.update();
 	Pong.update();
@@ -45,7 +48,18 @@ void game::update()
 
 void game::handleInput(b2World& iWorld, sf::Event& iEvent)
 {
-	Pong.handleInput(iEvent);
+	//Key inputs
+	if (iEvent.type == sf::Event::KeyPressed)
+	{
+		if (iEvent.key.code == sf::Keyboard::Space)
+		{
+			if (!Started) {
+				Pong = CreatePong(iWorld);
+				Pong.startMoving();
+				Started = 1;
+			}
+		}
+	}
 	Player1.handleInput(iEvent);
 	Player2.handleInput(iEvent);
 
