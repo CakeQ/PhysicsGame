@@ -21,11 +21,6 @@ paddle::paddle(b2World& iWorld, float iXPos, float iYPos, double iSCALE, int iPl
 	getBody()->SetLinearDamping(9);
 }
 
-paddle::~paddle()
-{
-
-}
-
 void paddle::update() {
 	if (Moving != 0) 
 	{

@@ -1,6 +1,11 @@
-//! Game controller class.
+/**
+@File game.h
+*/
+
+//! Game class.
 /*!
-	Main holder class that contains all items used in the game on runtime
+Game class that holds all items within the pong game. Handles all events such as victory conditions, spawning pongs and spawning everything on run.
+Created by Daniel Thompson, P15230940.
 */
 
 #pragma once
@@ -12,25 +17,29 @@
 
 class game {
 private:
-	std::vector<object> ObjectList;
-	paddle Player1, Player2;
-	pong Pong;
-	bool Started;
+	std::vector<object> ObjectList;											//!< Contains all objects spawned in the game.
+	paddle				Player1,											//!< Holder for Player 1 paddle.
+						Player2;											//!< Holder for Player 2 paddle.
+	pong				Pong;												//!< Holder for current pong.
+	bool				Started;											//!< Dictates if the round has started.
 
-	double SCALE;
-	int WinWidth, WinHeight;
+	double				SCALE;												//!< Scale used to convert Box2D coordinates into window coordinates.
+	int					WinWidth,											//!< Stores window width.
+						WinHeight,											//!< Stores window height.
+						Player1Score,										//!< Stores Player 1's score.
+						Player2Score;										//!< Stores Player 2's score.
 
 public:
-	game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE); //!< Game controller constructor
-	~game(); //!< Game controller destructor
+	game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE);	//!< Game controller constructor.
+	~game();																//!< Game controller destructor.
 
-	virtual void draw(sf::RenderWindow& iWindow);
-	virtual void update();
-	virtual void handleInput(b2World& iWorld, sf::Event& Event);
+	virtual void		draw(sf::RenderWindow& iWindow);					//!< Draws all objects in the game.
+	virtual void		update(b2World& iWorld);							//!< Updates all objects in the game.
+	virtual void		handleInput(b2World& iWorld, sf::Event& Event);		//!< Handles all input in the game.
 
-	int checkVictory();
+	int					checkVictory();										//!< Checks for player victory.
 
-	void CreateWall(b2World& iWorld, float X, float Y);
-	void CreateBox(b2World& iWorld, int MouseX, int MouseY);
-	pong CreatePong(b2World& iWorld);
+	void				CreateWall(b2World& iWorld, float X, float Y);		//!< Creates horizontal walls.
+	void				CreateBox(b2World& iWorld, int MouseX, int MouseY);	//!< Creates test boxes (Not used within game normally).
+	pong				CreatePong(b2World& iWorld);						//!< Creates Pong ball.
 };

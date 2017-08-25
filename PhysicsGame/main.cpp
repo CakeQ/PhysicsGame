@@ -65,7 +65,7 @@ int main() /** Main Proc */
 		//Simulate the world
 		World.Step(1 / 60.0f, 8, 3);
 
-		GameController.update();
+		GameController.update(World);
 
 		Window.clear(sf::Color::Black);
 

@@ -3,33 +3,25 @@
 #include <iostream>
 
 object::object(b2World& iWorld, float iXPos, float iYPos, float iWidth, float iHeight, int iRestitution, double iSCALE)
-{
-	XPos = iXPos;
-	YPos = iYPos;
-	
+{	
 	Width = iWidth;
 	Height = iHeight;
 
 	SCALE = iSCALE;
 
 	//Define body
-	BodyDef.position = b2Vec2(XPos / SCALE, YPos / SCALE);			//!< Scale is used because Box2D coordinates arent the same as pixel coordinates
+	BodyDef.position = b2Vec2(iXPos / SCALE, iYPos / SCALE);			
 	BodyDef.type = b2_dynamicBody;
 	Body = iWorld.CreateBody(&BodyDef);
 
 	//Define shape
-	Shape.SetAsBox((Width / 2) / SCALE, (Height / 2) / SCALE);		//!< Creates a box shape. Divide your desired width and height by 2.
-	FixtureDef.density = 1.0f;										//!< Sets the density of the body
+	Shape.SetAsBox((Width / 2) / SCALE, (Height / 2) / SCALE);		
+	FixtureDef.density = 1.0f;										
 	FixtureDef.friction = 0.7f;
-	FixtureDef.shape = &Shape;										//!< Sets the 
+	FixtureDef.shape = &Shape;										
 	FixtureDef.restitution = iRestitution;
 
-	Body->CreateFixture(&FixtureDef);								//!< Apply the fixture definition
-
-}
-
-object::~object()
-{
+	Body->CreateFixture(&FixtureDef);								
 
 }
 
@@ -53,6 +45,14 @@ void object::update()
 void object::move(b2Vec2& iVelocity)
 {
 	Body->SetLinearVelocity(iVelocity);
+}
+
+b2Vec2 object::getPos()
+{
+	b2Vec2 Result;
+	Result.x = getBody()->GetPosition().x * SCALE;
+	Result.y = getBody()->GetPosition().y * SCALE;
+	return Result;
 }
 
 void object::draw(sf::RenderWindow& window)

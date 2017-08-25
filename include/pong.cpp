@@ -52,5 +52,4 @@ void pong::update()
 void pong::move(b2Vec2& iVelocity)
 {
 	getBody()->SetLinearVelocity(iVelocity);
-
 }

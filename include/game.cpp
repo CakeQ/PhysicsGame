@@ -20,6 +20,9 @@ game::game(b2World& iWorld, int iWinWidth, int iWinHeight, double iSCALE) :
 	CreateWall(iWorld, (WinWidth / 2), 20);					//Top wall
 
 	Started = 0;
+
+	Player1Score = 0;
+	Player2Score = 0;
 }
 
 game::~game()
@@ -36,7 +39,7 @@ void game::draw(sf::RenderWindow& iWindow)
 	}
 }
 
-void game::update()
+void game::update(b2World& iWorld)
 {
 	if (!Pong.getBody()) {
 		Started = 0;
@@ -44,6 +47,16 @@ void game::update()
 	Player1.update();
 	Player2.update();
 	Pong.update();
+	if (checkVictory() != 0) {
+		switch(checkVictory()) {
+		case 1:
+			Player1Score += 1;
+			break;
+		case 2:
+			Player2Score += 1;
+			break;
+		}
+	}
 }
 
 void game::handleInput(b2World& iWorld, sf::Event& iEvent)
@@ -63,6 +76,15 @@ void game::handleInput(b2World& iWorld, sf::Event& iEvent)
 	Player1.handleInput(iEvent);
 	Player2.handleInput(iEvent);
 
+}
+
+int game::checkVictory()
+{
+	if (Pong.getPos().x > WinWidth)
+		return 1;
+	else if (Pong.getPos().x < 0)
+		return 2;
+	else return 0;
 }
 
 void game::CreateWall(b2World& iWorld, float iX, float iY) {
